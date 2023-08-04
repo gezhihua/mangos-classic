@@ -302,6 +302,7 @@ int main(int argc, char* argv[])
         {
             loopCounter = 0;
             DETAIL_LOG("Ping MySQL to keep connection alive");
+			//定时与数据库ping,保障与数据库处于连接中，默认限制为30分钟。如果数据库timeout超时时间设置比30分钟短，会出现与数据库断开现象
             LoginDatabase.Ping();
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
